@@ -9,7 +9,9 @@ namespace ApiOpenBanking.Models
 {
     public class Document
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
+        public int ID { get; set; }
         public string cpfNumber { get; set; }
         public string passportNumber { get; set; }
         public DateTime passportExpirationDate { get; set; }

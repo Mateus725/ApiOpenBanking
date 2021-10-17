@@ -4,14 +4,16 @@ using ApiOpenBanking.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApiOpenBanking.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211017033652_teste-documento")]
+    partial class testedocumento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,110 +28,28 @@ namespace ApiOpenBanking.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CPF")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("additionalInfo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("additionalInfoAdress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("additionalInfoPhone1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("additionalInfoPhone2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("areaCodePhone1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("areaCodePhone2")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("brandName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("checkDigit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("civilName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("civilNameFiliation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("companyCnpj")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("country")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("countryAdress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("countryCallingCode1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("countryCallingCode2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("countryCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("countrySubDivision")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("contactsID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("dateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("districtName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("expirationDate")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("documentID")
+                        .HasColumnType("int");
 
                     b.Property<bool>("hasBrazilianNationality")
                         .HasColumnType("bit");
-
-                    b.Property<string>("ibgeTownCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("issueDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("maritalStatusAdditionalInfo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("maritalStatusCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("numberDocument")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("numberPhone1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("numberPhone2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("otherNationalitiesInfo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("phoneExtension1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("phoneExtension2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("postCode")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("sex")
@@ -138,28 +58,11 @@ namespace ApiOpenBanking.Migrations
                     b.Property<string>("socialName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("socialNameFiliation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("townName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("typeAdditionalInfo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("typeDocument")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("typeFiliation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("typePhone1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("typePhone2")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("personalID");
+
+                    b.HasIndex("contactsID");
+
+                    b.HasIndex("documentID");
 
                     b.ToTable("Accounts");
                 });
@@ -169,7 +72,12 @@ namespace ApiOpenBanking.Migrations
                     b.Property<string>("CNPJ")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int?>("AccountpersonalID")
+                        .HasColumnType("int");
+
                     b.HasKey("CNPJ");
+
+                    b.HasIndex("AccountpersonalID");
 
                     b.ToTable("CompanyCNPJs");
                 });
@@ -233,6 +141,9 @@ namespace ApiOpenBanking.Migrations
                     b.Property<string>("civilName")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int?>("AccountpersonalID")
+                        .HasColumnType("int");
+
                     b.Property<string>("socialName")
                         .HasColumnType("nvarchar(max)");
 
@@ -240,6 +151,8 @@ namespace ApiOpenBanking.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("civilName");
+
+                    b.HasIndex("AccountpersonalID");
 
                     b.ToTable("Filiations");
                 });
@@ -269,10 +182,15 @@ namespace ApiOpenBanking.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AccountpersonalID")
+                        .HasColumnType("int");
+
                     b.Property<string>("otherNationalitiesInfo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("AccountpersonalID");
 
                     b.ToTable("Nationalities");
                 });
@@ -283,6 +201,9 @@ namespace ApiOpenBanking.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AccountpersonalID")
+                        .HasColumnType("int");
 
                     b.Property<int?>("NationalityID")
                         .HasColumnType("int");
@@ -313,6 +234,8 @@ namespace ApiOpenBanking.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("AccountpersonalID");
 
                     b.HasIndex("NationalityID");
 
@@ -394,6 +317,28 @@ namespace ApiOpenBanking.Migrations
                     b.ToTable("PostalAdresses");
                 });
 
+            modelBuilder.Entity("ApiOpenBanking.Models.Account", b =>
+                {
+                    b.HasOne("ApiOpenBanking.Models.Contacts", "contacts")
+                        .WithMany()
+                        .HasForeignKey("contactsID");
+
+                    b.HasOne("ApiOpenBanking.Models.Document", "document")
+                        .WithMany()
+                        .HasForeignKey("documentID");
+
+                    b.Navigation("contacts");
+
+                    b.Navigation("document");
+                });
+
+            modelBuilder.Entity("ApiOpenBanking.Models.CompanyCNPJ", b =>
+                {
+                    b.HasOne("ApiOpenBanking.Models.Account", null)
+                        .WithMany("companyCnpj")
+                        .HasForeignKey("AccountpersonalID");
+                });
+
             modelBuilder.Entity("ApiOpenBanking.Models.Email", b =>
                 {
                     b.HasOne("ApiOpenBanking.Models.Contacts", null)
@@ -401,8 +346,26 @@ namespace ApiOpenBanking.Migrations
                         .HasForeignKey("ContactsID");
                 });
 
+            modelBuilder.Entity("ApiOpenBanking.Models.Filiation", b =>
+                {
+                    b.HasOne("ApiOpenBanking.Models.Account", null)
+                        .WithMany("filiation")
+                        .HasForeignKey("AccountpersonalID");
+                });
+
+            modelBuilder.Entity("ApiOpenBanking.Models.Nationality", b =>
+                {
+                    b.HasOne("ApiOpenBanking.Models.Account", null)
+                        .WithMany("nationality")
+                        .HasForeignKey("AccountpersonalID");
+                });
+
             modelBuilder.Entity("ApiOpenBanking.Models.OtherDocument", b =>
                 {
+                    b.HasOne("ApiOpenBanking.Models.Account", null)
+                        .WithMany("otherDocuments")
+                        .HasForeignKey("AccountpersonalID");
+
                     b.HasOne("ApiOpenBanking.Models.Nationality", null)
                         .WithMany("documents")
                         .HasForeignKey("NationalityID");
@@ -422,6 +385,17 @@ namespace ApiOpenBanking.Migrations
                         .HasForeignKey("geographicCoordinatesID");
 
                     b.Navigation("geographicCoordinates");
+                });
+
+            modelBuilder.Entity("ApiOpenBanking.Models.Account", b =>
+                {
+                    b.Navigation("companyCnpj");
+
+                    b.Navigation("filiation");
+
+                    b.Navigation("nationality");
+
+                    b.Navigation("otherDocuments");
                 });
 
             modelBuilder.Entity("ApiOpenBanking.Models.Contacts", b =>

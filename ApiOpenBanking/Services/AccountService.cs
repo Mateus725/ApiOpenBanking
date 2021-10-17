@@ -17,7 +17,7 @@ namespace ApiOpenBanking.Services
         {
             try
             {
-                return _dataContext.Accounts.Where(acc => acc.document.cpfNumber == CPF).First();
+                return _dataContext.Accounts.Where(acc => acc.CPF == CPF).First();
             }
             catch
             {

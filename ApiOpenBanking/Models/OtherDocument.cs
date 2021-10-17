@@ -9,10 +9,11 @@ namespace ApiOpenBanking.Models
 {
     public class OtherDocument
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        public int ID { get; set; }
         public string type { get; set; }
         public string typeAdditionalInfo { get; set; }
-
-        [Key]
         public string number { get; set; }
         public char checkDigit { get; set; }
         public string additionalInfo { get; set; }

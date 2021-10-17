@@ -13,7 +13,7 @@ namespace ApiOpenBanking.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int ID { get; set; }
-        public List<PostalAdress> postalAdresses { get; set; }
+        PostalAdress postalAdresses { get; set; }
         public List<Phone> phones { get; set; }
         public List<Email> emails { get; set; }
     }
