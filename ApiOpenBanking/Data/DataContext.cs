@@ -24,5 +24,7 @@ namespace ApiOpenBanking.Data
 
         public DbSet<CompanyCNPJ> CompanyCNPJs { get; set; }
 
+        public DbSet<AccountPJ> AccountPJs { get; set; }
+
     }
 }

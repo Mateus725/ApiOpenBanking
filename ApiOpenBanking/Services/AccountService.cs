@@ -25,11 +25,35 @@ namespace ApiOpenBanking.Services
             }
         }
 
+        public AccountPJ GetAccountPJ(string CNPJ)
+        {
+            try
+            {
+                return _dataContext.AccountPJs.Where(acc => acc.cnpjNumber == CNPJ).First();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public List<Account> GetAllAccountsPF()
         {
             try
             {
                 return _dataContext.Accounts.ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<AccountPJ> GetAllAccountsPJ()
+        {
+            try
+            {
+                return _dataContext.AccountPJs.ToList();
             }
             catch
             {

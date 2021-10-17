@@ -12,6 +12,9 @@ namespace ApiOpenBanking.Services
 
         List<Account> GetAllAccountsPF();
 
+        AccountPJ GetAccountPJ(string CNPJ);
+
+        List<AccountPJ> GetAllAccountsPJ();
 
     }
 }
